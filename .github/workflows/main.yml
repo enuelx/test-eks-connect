@@ -1,0 +1,17 @@
+name: Get Pods
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  test:
+    name: Get Pods in EKS
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - name: Get Pods
+        uses: kodermax/kubectl-aws-eks@master
+        with:
+          args: get pods -n kube-system
