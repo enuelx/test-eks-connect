@@ -26,10 +26,5 @@ jobs:
     - name: EKS kubectl
       uses: ianbelcher/eks-kubectl-action@1.6
       with:
-        aws_region: sa-east-1
         cluster_name: collider-qa
-        # EKS role arn that allow access eks cluster (Mostly happen when you create your cluster with CDK).
-        ##eks_role_arn: # optional
-        # File to read and pass as stdin to kubectl
-        ##stdin: # optional
         args: get pods -A
