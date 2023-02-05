@@ -23,8 +23,11 @@ jobs:
         role-session-name: GitHubActions
         audience: sts.amazonaws.com      
         aws-region: sa-east-1
-    - name: EKS kubectl
+    - name: Rollout restart deployment in EKS
+      id: kubectl
       uses: ianbelcher/eks-kubectl-action@1.6
       with:
         cluster_name: collider-qa
         args: rollout restart deployment/${{ vars.DEPLOYMENT }} -n ${{ vars.KUBE_NAMESPACE }}
+    - name: Output kubectl command
+      run: echo "${{ steps.kubectl.outputs.kubectl-out }}"
