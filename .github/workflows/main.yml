@@ -27,4 +27,4 @@ jobs:
       uses: ianbelcher/eks-kubectl-action@1.6
       with:
         cluster_name: collider-qa
-        args: rollout restart deployment/${{ vars.DEPLOYMENT }} -n ${{ vars.KUBENAMESPACE }}
+        args: rollout restart deployment/${{ vars.DEPLOYMENT }} -n ${{ vars.KUBE_NAMESPACE }}
