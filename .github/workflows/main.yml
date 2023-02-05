@@ -21,20 +21,15 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::653784090147:role/github-actions-oidc-Role-1EO4DNTXB38A
         role-session-name: GitHubActions
-        audience: sts.amazonaws.com
-        #aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        #aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}        
+        audience: sts.amazonaws.com      
         aws-region: sa-east-1
     - name: EKS kubectl
       uses: ianbelcher/eks-kubectl-action@1.6
       with:
-        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_region: sa-east-1
         cluster_name: collider-qa
         # EKS role arn that allow access eks cluster (Mostly happen when you create your cluster with CDK).
         ##eks_role_arn: # optional
         # File to read and pass as stdin to kubectl
         ##stdin: # optional
-        # The arguments that you want to pass through to the kubectl command
         args: get pods -A
